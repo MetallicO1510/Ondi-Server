@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Livewire\CategoriesComponent;
+use App\Http\Livewire\HomeComponent;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,8 +20,10 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::get('/home', HomeComponent::class)->name('home')->middleware('auth');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//RUTAS NUEVAS
+Route::get('/categories', CategoriesComponent::class)->name('categories')->middleware('auth');
 
 Auth::routes();
 
