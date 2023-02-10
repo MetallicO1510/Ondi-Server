@@ -13,6 +13,9 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -36,7 +39,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Categorías</a>
+                            <a class="nav-link" href="/categories">Categorías</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Tiendas</a>
@@ -84,10 +87,25 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
+            <div class="container">
+                @yield('content')
+
+            </div>
         </main>
     </div>
     @livewireScripts
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script>
+        Livewire.on('reset', () => {
+            $('#deleteModal').modal('hide')
+            $('#form').trigger("reset");
+        })
+        Livewire.on('showModal', () => {
+            $('#deleteModal').modal('show')
+            // $('#form').trigger("reset");
+        })
+    </script>
 </body>
 
 </html>
